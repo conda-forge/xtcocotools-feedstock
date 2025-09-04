@@ -12,6 +12,10 @@ source:
 build:
   number: 2
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  script: |
+    # Ensure __version__ exists so setup.py's get_version() doesn't KeyError
+    {{ PYTHON }} -c "import os,io; d='xtcocotools'; os.makedirs(d, exist_ok=True); p=os.path.join(d,'__init__.py'); io.open(p,'a',encoding='utf-8').write('\n__version__ = \\'{{ version }}\\'\\n')"  # [py>=313]
+    {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
   build:
