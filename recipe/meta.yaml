@@ -12,7 +12,7 @@ source:
 build:
   number: 2
   script:
-    - {{ PYTHON }} -c "import os,io; d='xtcocotools'; os.makedirs(d, exist_ok=True); p=os.path.join(d,'version.py'); io.open(p,'a',encoding='utf-8').write('\n__version__ = \'{{ version }}\'\n')"  # [py>=313]
+    - {{ PYTHON }} -c "content = open('setup.py').read().replace('version=get_version(),', 'version=\'{{ version }}\','); open('setup.py', 'w').write(content)"
     - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
