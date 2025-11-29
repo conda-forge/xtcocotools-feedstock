@@ -10,7 +10,7 @@ source:
     sha256: 6434382784d206204d2a1b491dba359ff3464a2b9eb5890fbc0d868cad4e810f
 
 build:
-  number: 2
+  number: 4
   script:
     - {{ PYTHON }} -c "content = open('setup.py').read().replace('version=get_version(),', 'version=\'{{ version }}\','); open('setup.py', 'w').write(content)"
     - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
