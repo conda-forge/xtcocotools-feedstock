@@ -32,6 +32,7 @@ requirements:
     - matplotlib
     - {{ pin_compatible('numpy') }}
     - python
+    - setuptools >=18.0
 
 test:
   imports:
