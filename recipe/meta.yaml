@@ -30,7 +30,7 @@ requirements:
   run:
     - cython
     - matplotlib
-    - numpy >=1.20.0
+    - {{ pin_compatible('numpy') }}
     - python
 
 test:
