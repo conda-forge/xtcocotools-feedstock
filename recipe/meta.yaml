@@ -10,8 +10,11 @@ source:
     sha256: 6434382784d206204d2a1b491dba359ff3464a2b9eb5890fbc0d868cad4e810f
 
 build:
-  number: 1
-  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  number: 2
+  script:
+    - {{ PYTHON }} -c "import os,io; d='xtcocotools'; os.makedirs(d, exist_ok=True); p=os.path.join(d,'__init__.py'); io.open(p,'a',encoding='utf-8').write('\n__version__ = \'{{ version }}\'\n')"
+    - {{ PYTHON }} -c "content = open('setup.py').read().replace('version=get_version(),', 'version=\'{{ version }}\','); open('setup.py', 'w').write(content)"
+    - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
   build:
@@ -27,8 +30,9 @@ requirements:
   run:
     - cython
     - matplotlib
-    - numpy >=1.20.0
+    - {{ pin_compatible('numpy') }}
     - python
+    - setuptools >=18.0
 
 test:
   imports:
