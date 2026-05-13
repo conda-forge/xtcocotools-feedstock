@@ -8,6 +8,8 @@ package:
 source:
   - url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
     sha256: 6434382784d206204d2a1b491dba359ff3464a2b9eb5890fbc0d868cad4e810f
+    patches:
+      - numpy-array-owndata.patch
 
 build:
   number: 5
