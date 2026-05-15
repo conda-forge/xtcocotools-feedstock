@@ -9,6 +9,8 @@ Package license: MIT
 
 Summary: Extended COCO-API
 
+Development: https://github.com/jin-s13/xtcocoapi
+
 Current build status
 ====================
 
