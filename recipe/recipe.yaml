@@ -15,7 +15,7 @@ source:
     - numpy-array-owndata.patch
 
 build:
-  number: 6
+  number: 7
   script:
     - python -c "import os; content = open('setup.py').read().replace('version=get_version(),', f\"version='{os.environ['PKG_VERSION']}',\"); open('setup.py', 'w').write(content)"
     - python -c "from pathlib import Path; p = Path('requirements.txt'); p.write_text('\n'.join(line for line in p.read_text().splitlines() if not line.lower().startswith(('cython', 'setuptools'))) + '\n')"
